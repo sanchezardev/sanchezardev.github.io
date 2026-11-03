@@ -91,51 +91,136 @@
         <div class="row gy-4">
 
           <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper init-swiper">
-
-              <script type="application/json" class="swiper-config">
-                {
-                  "loop": true,
-                  "speed": 600,
-                  "autoplay": {
-                    "delay": 5000
-                  },
-                  "slidesPerView": "auto",
-                  "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                  }
-                }
-              </script>
-
-              <div class="swiper-wrapper align-items-center">
-
-                <div class="swiper-slide d-flex align-items-center justify-content-center bg-light">
-                  <img src="../assets/img/SocialNetworkApiRest/DiagramaAPIRest.png"
-                       alt="Architecture Diagram"
-                       class="img-fluid"
-                       loading="lazy">
+            <div class="project-mockup-frame" data-aos="fade-up" data-aos-delay="150">
+              <!-- Window / Mockup Header Bar -->
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
                 </div>
-                <div class="swiper-slide d-flex align-items-center justify-content-center bg-light">
-                  <img src="../assets/img/SocialNetworkApiRest/403error.png"
-                       alt="JWT Login Postman"
-                       class="img-fluid"
-                       loading="lazy">
+                <div class="mockup-title">
+                  <i class="bi bi-terminal-fill me-1 text-warning"></i> Social Network REST API · Preview
                 </div>
-                <div class="swiper-slide d-flex align-items-center justify-content-center bg-light">
-                  <img src="../assets/img/SocialNetworkApiRest/login.png"
-                       alt="JWT Login Postman"
-                       class="img-fluid"
-                       loading="lazy">
+                <div class="mockup-actions">
+                  <span class="mockup-badge">
+                    <i class="bi bi-images me-1"></i> Interactive Showcase
+                  </span>
                 </div>
-
-<!--                <div class="swiper-slide">-->
-<!--                  <img src="../assets/img/portfolio/portfolio-10.webp" alt="Portfolio Image" class="img-fluid" loading="lazy">-->
-<!--                </div>-->
-
               </div>
-              <div class="swiper-pagination"></div>
+
+              <!-- Main Swiper Slider -->
+              <div class="portfolio-details-slider swiper init-swiper">
+
+                <script type="application/json" class="swiper-config">
+                  {
+                    "loop": true,
+                    "speed": 600,
+                    "autoplay": {
+                      "delay": 5000,
+                      "disableOnInteraction": false,
+                      "pauseOnMouseEnter": true
+                    },
+                    "slidesPerView": 1,
+                    "pagination": {
+                      "el": ".swiper-pagination",
+                      "type": "bullets",
+                      "clickable": true
+                    },
+                    "navigation": {
+                      "nextEl": ".swiper-button-next",
+                      "prevEl": ".swiper-button-prev"
+                    }
+                  }
+                </script>
+
+                <div class="swiper-wrapper align-items-center">
+
+                  <!-- Slide 1: Architecture Diagram -->
+                  <div class="swiper-slide">
+                    <a href="../assets/img/SocialNetworkApiRest/DiagramaAPIRest.png"
+                       class="glightbox slide-preview-wrap"
+                       data-gallery="portfolio-details-gallery"
+                       data-glightbox="title: Architecture &amp; Database Diagram; description: Layered Architecture (Controller, Service, Repository) with Spring Data JPA and MariaDB relational persistence.">
+                      <div class="slide-badge-top">
+                        <span class="badge-tech"><i class="bi bi-diagram-3-fill text-warning me-1"></i> Architecture Diagram</span>
+                      </div>
+                      <div class="slide-img-container">
+                        <img src="../assets/img/SocialNetworkApiRest/DiagramaAPIRest.png"
+                             alt="Social Network Architecture Diagram"
+                             class="img-fluid"
+                             loading="lazy">
+                      </div>
+                      <div class="slide-zoom-hint">
+                        <i class="bi bi-arrows-fullscreen me-1"></i> Fullscreen Zoom
+                      </div>
+                    </a>
+                  </div>
+
+                  <!-- Slide 2: 403 Forbidden Error -->
+                  <div class="swiper-slide">
+                    <a href="../assets/img/SocialNetworkApiRest/403error.png"
+                       class="glightbox slide-preview-wrap"
+                       data-gallery="portfolio-details-gallery"
+                       data-glightbox="title: Security Validation · 403 Forbidden; description: Unauthorized endpoint access rejection verified in Postman via Spring Security &amp; JWT filter.">
+                      <div class="slide-badge-top">
+                        <span class="badge-tech"><i class="bi bi-shield-x text-danger me-1"></i> Postman · 403 Forbidden</span>
+                      </div>
+                      <div class="slide-img-container">
+                        <img src="../assets/img/SocialNetworkApiRest/403error.png"
+                             alt="Postman 403 Forbidden Verification"
+                             class="img-fluid"
+                             loading="lazy">
+                      </div>
+                      <div class="slide-zoom-hint">
+                        <i class="bi bi-arrows-fullscreen me-1"></i> Fullscreen Zoom
+                      </div>
+                    </a>
+                  </div>
+
+                  <!-- Slide 3: Login JWT Success -->
+                  <div class="swiper-slide">
+                    <a href="../assets/img/SocialNetworkApiRest/login.png"
+                       class="glightbox slide-preview-wrap"
+                       data-gallery="portfolio-details-gallery"
+                       data-glightbox="title: Authentication · JWT Login Success; description: Postman verification of user login endpoint generating and returning a signed JWT Bearer token.">
+                      <div class="slide-badge-top">
+                        <span class="badge-tech"><i class="bi bi-shield-check text-success me-1"></i> Postman · JWT Login 200 OK</span>
+                      </div>
+                      <div class="slide-img-container">
+                        <img src="../assets/img/SocialNetworkApiRest/login.png"
+                             alt="Postman JWT Authentication Response"
+                             class="img-fluid"
+                             loading="lazy">
+                      </div>
+                      <div class="slide-zoom-hint">
+                        <i class="bi bi-arrows-fullscreen me-1"></i> Fullscreen Zoom
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+
+                <!-- Swiper Navigation Arrows -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                <!-- Swiper Bullets Pagination -->
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+
+            <!-- Interactive Quick Navigation Pills -->
+            <div class="slider-quick-nav" data-aos="fade-up" data-aos-delay="200">
+              <button type="button" class="quick-nav-btn active" data-slide="0">
+                <i class="bi bi-diagram-3-fill text-warning me-1"></i> Architecture
+              </button>
+              <button type="button" class="quick-nav-btn" data-slide="1">
+                <i class="bi bi-shield-x text-danger me-1"></i> 403 Forbidden Test
+              </button>
+              <button type="button" class="quick-nav-btn" data-slide="2">
+                <i class="bi bi-shield-check text-success me-1"></i> JWT Login Test
+              </button>
             </div>
           </div>
 
@@ -145,11 +230,12 @@
               <ul>
                 <li><strong>Category</strong>: Backend RESTful API</li>
                 <li><strong>Stack</strong>: Java 23, Spring Boot, Spring Security</li>
-                <li><strong>Database</strong>: MariaDB / MySQL (JPA & Hibernate)</li>
-                <li><strong>Security</strong>: JWT (JSON Web Tokens) & BCrypt</li>
-                <a href="https://github.com/sanchezardev/api_rest_RedSocial" target="_blank" class="btn btn-warning btn-lg shadow fw-bold text-dark mt-3" style="border-radius: 30px; padding: 3px 35px;">
-                  <i class="bi bi-github fs-4 me-2"></i> Click Here to View Code!
-                </a>              </ul>
+                <li><strong>Database</strong>: MariaDB / MySQL (JPA &amp; Hibernate)</li>
+                <li><strong>Security</strong>: JWT (JSON Web Tokens) &amp; BCrypt</li>
+              </ul>
+              <a href="https://github.com/sanchezardev/api_rest_RedSocial" target="_blank" class="btn btn-warning btn-lg shadow fw-bold text-dark mt-3 d-inline-block text-center w-100" style="border-radius: 30px; padding: 8px 24px;">
+                <i class="bi bi-github fs-4 me-2 align-middle"></i> View on GitHub
+              </a>
             </div>
           </div>
 
@@ -245,6 +331,33 @@
 
   <!-- Main JS File -->
   <script src="../assets/js/main.js"></script>
+
+  <!-- Slider & Quick Navigation Controller -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const sliderEl = document.querySelector(".portfolio-details-slider");
+      const quickBtns = document.querySelectorAll(".quick-nav-btn");
+
+      quickBtns.forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+          if (sliderEl && sliderEl.swiper) {
+            sliderEl.swiper.slideToLoop(index);
+          }
+        });
+      });
+
+      window.addEventListener("load", () => {
+        if (sliderEl && sliderEl.swiper) {
+          sliderEl.swiper.on("slideChange", function() {
+            const activeIdx = sliderEl.swiper.realIndex;
+            quickBtns.forEach((btn, i) => {
+              btn.classList.toggle("active", i === activeIdx);
+            });
+          });
+        }
+      });
+    });
+  </script>
 
 </body>
 

@@ -179,9 +179,13 @@
       if (swiperElement.classList.contains("swiper-tab")) {
         initSwiperWithCustomPagination(swiperElement, config);
       } else {
-        new Swiper(swiperElement, config);
+        swiperElement.swiper = new Swiper(swiperElement, config);
       }
     });
+
+    if (typeof glightbox !== 'undefined' && glightbox && glightbox.reload) {
+      glightbox.reload();
+    }
   }
 
   window.addEventListener("load", initSwiper);
