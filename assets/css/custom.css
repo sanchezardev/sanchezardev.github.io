@@ -399,3 +399,375 @@ section,
     margin-left: 330px;   /* deja hueco a la barra lateral, igual que <main> */
   }
 }
+
+/* ==========================================================================
+   Tarjetas de proyecto con vista animada (Portfolio)
+   --------------------------------------------------------------------------
+   .card-preview      contenedor clicable (enlace a la página del proyecto)
+   .demo-api          mini "Postman" que alterna 3 peticiones (ciclo de 12 s)
+   .demo-foro         mini navegador con el feed de recetas en scroll
+   Velocidades: cambia --api-cycle o --foro-scroll.
+   ========================================================================== */
+:root {
+  --card-height: 350px;
+  --api-cycle: 12s;      /* duración total de las 3 escenas de la API */
+  --foro-scroll: 22s;    /* lo que tarda el feed de recetas en dar la vuelta */
+  --m-get: #61affe;      /* colores de métodos HTTP (estilo Swagger) */
+  --m-post: #49cc90;
+  --m-del: #f93e3e;
+}
+
+.card-preview {
+  position: relative;
+  display: block;
+  height: var(--card-height);
+  padding: 18px;
+  background:
+    radial-gradient(circle at 20% 0%, #2e2e33 0%, transparent 60%),
+    linear-gradient(160deg, #202023, #161618);
+  color: var(--default-color);
+  overflow: hidden;
+}
+
+.card-preview:hover {
+  color: var(--default-color);
+}
+
+.demo-window {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #121214;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  transition: transform 0.5s ease;
+  font-size: 12px;
+}
+
+.portfolio .portfolio-wrap:hover .demo-window {
+  transform: scale(1.02);
+}
+
+.demo-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #1b1b1e;
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.demo-bar .dot { width: 9px; height: 9px; border-radius: 50%; background: #ff5f57; flex-shrink: 0; }
+.demo-bar .dot:nth-child(2) { background: #febc2e; }
+.demo-bar .dot:nth-child(3) { background: #28c840; }
+
+.demo-title,
+.demo-url {
+  margin-left: 10px;
+  font-size: 11px;
+  color: var(--muted-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.demo-url {
+  flex: 1;
+  padding: 2px 10px;
+  background: #121214;
+  border-radius: 20px;
+}
+
+/* Etiqueta "View project" siempre visible (se oculta al mostrar el overlay) */
+.play-hint {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  z-index: 2;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  border-radius: 50px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.3s;
+}
+
+.portfolio .portfolio-wrap:hover .play-hint {
+  opacity: 0;
+}
+
+/* El overlay deja pasar el clic a la tarjeta, salvo en sus botones */
+.portfolio .portfolio-wrap .portfolio-info {
+  pointer-events: none;
+}
+
+.portfolio .portfolio-wrap .portfolio-info a {
+  pointer-events: auto;
+}
+
+/* ---------- Demo API ---------- */
+.api-body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.api-sidebar {
+  width: 38%;
+  margin: 0;
+  padding: 8px 0;
+  border-right: 1px solid var(--border-color);
+  font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+  font-size: 10.5px;
+}
+
+.api-sidebar li {
+  padding: 5px 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-left: 2px solid transparent;
+}
+
+.api-sidebar li span { color: var(--muted-color); font-weight: 400; }
+
+/* Resalta el endpoint que se está "ejecutando" en cada escena */
+.api-sidebar li:nth-child(1),
+.api-sidebar li:nth-child(2),
+.api-sidebar li:nth-child(6) {
+  animation: api-active var(--api-cycle) infinite;
+}
+.api-sidebar li:nth-child(2) { animation-delay: calc(var(--api-cycle) / 3); }
+.api-sidebar li:nth-child(6) { animation-delay: calc(var(--api-cycle) / 3 * 2); }
+
+.m-get { color: var(--m-get); }
+.m-post { color: var(--m-post); }
+.m-del { color: var(--m-del); }
+
+.api-main {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.api-scene {
+  position: absolute;
+  inset: 0;
+  padding: 12px 14px;
+  font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+  opacity: 0;
+  animation: api-scene var(--api-cycle) infinite;
+}
+
+.api-request {
+  padding: 6px 8px;
+  margin-bottom: 8px;
+  background: #1b1b1e;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.api-request .typing {
+  display: inline-block;
+  vertical-align: bottom;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 0;
+  animation: api-type var(--api-cycle) steps(18) infinite;
+}
+
+.api-json {
+  margin: 0 0 8px;
+  padding: 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #c9c9cf;
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+
+.api-json.req { color: var(--muted-color); }
+
+.api-status {
+  display: inline-block;
+  padding: 2px 8px;
+  margin-bottom: 8px;
+  font-size: 10.5px;
+  font-weight: 700;
+  border-radius: 4px;
+  opacity: 0;
+  animation: api-show var(--api-cycle) infinite;
+}
+
+.api-json.res {
+  opacity: 0;
+  animation: api-show-late var(--api-cycle) infinite;
+}
+
+.api-status.ok { color: var(--m-post); background: color-mix(in srgb, var(--m-post), transparent 85%); }
+.api-status.err { color: var(--m-del); background: color-mix(in srgb, var(--m-del), transparent 85%); }
+
+/* Escenas 2 y 3 (y todo lo que tienen dentro) arrancan 1/3 y 2/3 del ciclo más tarde */
+.api-scene:nth-child(2),
+.api-scene:nth-child(2) .typing,
+.api-scene:nth-child(2) .api-status,
+.api-scene:nth-child(2) .api-json.res { animation-delay: calc(var(--api-cycle) / 3); }
+
+.api-scene:nth-child(3),
+.api-scene:nth-child(3) .typing,
+.api-scene:nth-child(3) .api-status,
+.api-scene:nth-child(3) .api-json.res { animation-delay: calc(var(--api-cycle) / 3 * 2); }
+
+/* Cada escena ocupa 1/3 del ciclo (0–33%) */
+@keyframes api-scene {
+  0% { opacity: 0; transform: translateY(6px); }
+  3%, 30% { opacity: 1; transform: none; }
+  33%, 100% { opacity: 0; }
+}
+@keyframes api-type {
+  0% { max-width: 0; }
+  9%, 100% { max-width: 20ch; }
+}
+@keyframes api-show {
+  0%, 11% { opacity: 0; }
+  13%, 100% { opacity: 1; }
+}
+@keyframes api-show-late {
+  0%, 14% { opacity: 0; transform: translateY(4px); }
+  17%, 100% { opacity: 1; transform: none; }
+}
+@keyframes api-active {
+  0%, 31% { background: #1f1f23; border-left-color: var(--accent-color); }
+  33%, 100% { background: transparent; border-left-color: transparent; }
+}
+
+/* ---------- Demo ForoPlatos ---------- */
+.foro-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: #f4f1ea;
+  color: #2f4a33;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.foro-nav strong { font-size: 13px; color: #3d6b45; }
+.foro-tabs { display: flex; gap: 8px; color: #6b6b6b; }
+.foro-tabs .active { color: #2f4a33; font-weight: 700; border-bottom: 2px solid #3d6b45; }
+.foro-user { margin-left: auto; white-space: nowrap; }
+
+.foro-feed {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background: #ebe7de;
+}
+
+.foro-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 8px;
+  animation: foro-scroll var(--foro-scroll) linear infinite;
+}
+
+.portfolio .portfolio-wrap:hover .foro-track {
+  animation-duration: calc(var(--foro-scroll) / 2);   /* acelera al pasar el ratón */
+}
+
+.recipe {
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.portfolio .portfolio-wrap .recipe img {   /* selector largo para ganar a la regla de la plantilla */
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.portfolio .portfolio-wrap:hover .recipe img {
+  transform: none;   /* anula el zoom de imagen de la plantilla */
+}
+
+.recipe p {
+  margin: 4px 6px 0;
+  font-size: 10px;
+  font-weight: 600;
+  color: #2b2b2b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recipe span {
+  display: block;
+  margin: 0 6px 5px;
+  font-size: 9.5px;
+  color: #c0392b;
+}
+
+.recipe:nth-child(2) span i { display: inline-block; animation: foro-like 3s ease-in-out infinite; }
+
+.foro-toast {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: #fff;
+  white-space: nowrap;
+  background: rgba(47, 74, 51, 0.95);
+  border-radius: 50px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  animation: foro-toast 9s ease infinite 2s;
+}
+
+@keyframes foro-scroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }    /* -50% = una copia de la lista */
+}
+@keyframes foro-like {
+  0%, 70%, 100% { transform: scale(1); }
+  80% { transform: scale(1.5); }
+}
+@keyframes foro-toast {
+  0%, 5% { opacity: 0; transform: translate(-50%, 20px); }
+  10%, 40% { opacity: 1; transform: translate(-50%, 0); }
+  45%, 100% { opacity: 0; transform: translate(-50%, 20px); }
+}
+
+/* Accesibilidad: sin animaciones si el usuario las tiene desactivadas */
+@media (prefers-reduced-motion: reduce) {
+  .api-scene, .api-scene *, .api-sidebar li, .foro-track, .foro-toast, .recipe i {
+    animation: none !important;
+  }
+  .api-scene:first-child,
+  .api-scene:first-child .api-status,
+  .api-scene:first-child .api-json { opacity: 1; }
+  .api-scene:first-child .typing { max-width: 20ch; }
+}
+
+@media (max-width: 576px) {
+  :root { --card-height: 300px; }
+  .api-sidebar { display: none; }
+  .api-json { font-size: 9.5px; }
+  .foro-tabs { display: none; }
+}

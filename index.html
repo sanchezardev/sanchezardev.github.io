@@ -165,16 +165,71 @@
             <div class="col-lg-9">
               <div class="row gy-4 portfolio-container isotope-container" data-aos="fade-up" data-aos-delay="200">
 
+                <!-- ===== Proyecto: Social Network API =====
+                     La vista animada es HTML puro (.demo-api). Para cambiar las peticiones,
+                     edita el texto de cada .api-scene (hay 3 que se alternan cada 4 s). -->
                 <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-photography">
                   <div class="portfolio-wrap">
-                    <img src="assets/img/SocialNetworkApiRest/DiagramaAPIRest.png" class="img-fluid" alt="Architecture diagram of the Social Network REST API" loading="lazy">
+                    <a href="NewSections/NetworkApiRestProject.html" class="card-preview demo-api" aria-label="Open Social Network API project">
+                      <div class="demo-window">
+                        <div class="demo-bar">
+                          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                          <span class="demo-title">social-network-api · localhost:8080</span>
+                        </div>
+                        <div class="api-body">
+                          <ul class="api-sidebar list-unstyled">
+                            <li class="m-post">POST <span>/auth/login</span></li>
+                            <li class="m-get">GET <span>/posts</span></li>
+                            <li class="m-post">POST <span>/posts</span></li>
+                            <li class="m-get">GET <span>/users/{id}</span></li>
+                            <li class="m-del">DEL <span>/posts/{id}</span></li>
+                            <li class="m-get">GET <span>/admin/users</span></li>
+                          </ul>
+                          <div class="api-main">
+                            <!-- Escena 1: login -->
+                            <div class="api-scene">
+                              <div class="api-request"><b class="m-post">POST</b> <span class="typing">/api/auth/login</span></div>
+                              <pre class="api-json req">{ "username": "oscar", "password": "••••••" }</pre>
+                              <div class="api-status ok">200 OK · 84 ms</div>
+                              <pre class="api-json res">{
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIi...",
+  "type": "Bearer",
+  "expiresIn": 3600
+}</pre>
+                            </div>
+                            <!-- Escena 2: listado autenticado -->
+                            <div class="api-scene">
+                              <div class="api-request"><b class="m-get">GET</b> <span class="typing">/api/posts?page=0</span></div>
+                              <pre class="api-json req">Authorization: Bearer eyJhbGci...</pre>
+                              <div class="api-status ok">200 OK · 37 ms</div>
+                              <pre class="api-json res">[
+  { "id": 12, "author": "oscar", "likes": 42 },
+  { "id": 11, "author": "maria", "likes": 17 },
+  { "id": 10, "author": "dev_ana", "likes": 9 }
+]</pre>
+                            </div>
+                            <!-- Escena 3: seguridad -->
+                            <div class="api-scene">
+                              <div class="api-request"><b class="m-get">GET</b> <span class="typing">/api/admin/users</span></div>
+                              <pre class="api-json req">Authorization: (none)</pre>
+                              <div class="api-status err">403 Forbidden · 12 ms</div>
+                              <pre class="api-json res">{
+  "error": "Access denied",
+  "message": "JWT token is missing or invalid"
+}</pre>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <span class="play-hint"><i class="bi bi-play-circle"></i> View project</span>
+                    </a>
                     <div class="portfolio-info">
                       <div class="content">
                         <span class="category">Web API</span>
-                        <h4>Social Network API - Spring Boot 3 & Java 23</h4>
+                        <h4>Social Network API - Spring Boot 3 &amp; Java 23</h4>
                         <p class="stack">Java · Spring Boot · JPA · MariaDB · JWT</p>
                         <div class="portfolio-links">
-                          <a href="assets/img/SocialNetworkApiRest/DiagramaAPIRest.png" class="glightbox" title="Social Network REST API" aria-label="Enlarge image"><i class="bi bi-plus-lg"></i></a>
+                          <a href="assets/img/SocialNetworkApiRest/DiagramaAPIRest.png" class="glightbox" title="Social Network REST API – architecture" aria-label="View architecture diagram"><i class="bi bi-diagram-3"></i></a>
                           <a href="NewSections/NetworkApiRestProject.html" title="More Details" aria-label="Project details"><i class="bi bi-arrow-right"></i></a>
                         </div>
                       </div>
@@ -182,9 +237,45 @@
                   </div>
                 </div><!-- End Portfolio Item -->
 
+                <!-- ===== Proyecto: ForoPlatos =====
+                     Vista animada .demo-foro: las recetas son <div class="recipe">. Para cambiarlas,
+                     edita la imagen (assets/img/Foroplatos/dish-N.jpg), el título y los likes.
+                     La lista está duplicada para que el scroll sea infinito: cambia ambas copias. -->
                 <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-photography">
                   <div class="portfolio-wrap">
-                    <img src="assets/img/Foroplatos/Foroplatos_preview_opt.jpg" class="img-fluid" alt="ForoPlatos web platform preview" loading="lazy">
+                    <a href="NewSections/ForoplatosPHP.html" class="card-preview demo-foro" aria-label="Open ForoPlatos project">
+                      <div class="demo-window">
+                        <div class="demo-bar">
+                          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                          <span class="demo-url"><i class="bi bi-lock-fill"></i> foroplatos.local/recetas</span>
+                        </div>
+                        <div class="foro-nav">
+                          <strong>ForoPlatos</strong>
+                          <span class="foro-tabs"><span class="active">Tradicional</span><span>SlowFood</span><span>Air Fryer</span></span>
+                          <span class="foro-user"><i class="bi bi-person-circle"></i> oscar</span>
+                        </div>
+                        <div class="foro-feed">
+                          <div class="foro-track">
+                            <!-- copia 1 -->
+                            <div class="recipe"><img src="assets/img/Foroplatos/dish-1.jpg" alt="" loading="lazy"><p>Mac &amp; cheese casero</p><span><i class="bi bi-heart-fill"></i> 128</span></div>
+                            <div class="recipe"><img src="assets/img/Foroplatos/dish-2.jpg" alt="" loading="lazy"><p>Pollo guisado</p><span><i class="bi bi-heart-fill"></i> 96</span></div>
+                            <div class="recipe"><img src="assets/img/Foroplatos/dish-3.jpg" alt="" loading="lazy"><p>Patatas a la riojana</p><span><i class="bi bi-heart-fill"></i> 74</span></div>
+                            <div class="recipe"><img src="assets/img/Foroplatos/dish-4.jpg" alt="" loading="lazy"><p>Penne all'arrabbiata</p><span><i class="bi bi-heart-fill"></i> 61</span></div>
+                            <div class="recipe"><img src="assets/img/Foroplatos/dish-5.jpg" alt="" loading="lazy"><p>Fettuccine al pesto</p><span><i class="bi bi-heart-fill"></i> 55</span></div>
+                            <div class="recipe"><img src="assets/img/Foroplatos/dish-6.jpg" alt="" loading="lazy"><p>Tagliatelle Alfredo</p><span><i class="bi bi-heart-fill"></i> 49</span></div>
+                            <!-- copia 2 (igual que la 1) -->
+                            <div class="recipe"><img src="assets/img/Foroplatos/dish-1.jpg" alt="" loading="lazy"><p>Mac &amp; cheese casero</p><span><i class="bi bi-heart-fill"></i> 128</span></div>
+                            <div class="recipe"><img src="assets/img/Foroplatos/dish-2.jpg" alt="" loading="lazy"><p>Pollo guisado</p><span><i class="bi bi-heart-fill"></i> 96</span></div>
+                            <div class="recipe"><img src="assets/img/Foroplatos/dish-3.jpg" alt="" loading="lazy"><p>Patatas a la riojana</p><span><i class="bi bi-heart-fill"></i> 74</span></div>
+                            <div class="recipe"><img src="assets/img/Foroplatos/dish-4.jpg" alt="" loading="lazy"><p>Penne all'arrabbiata</p><span><i class="bi bi-heart-fill"></i> 61</span></div>
+                            <div class="recipe"><img src="assets/img/Foroplatos/dish-5.jpg" alt="" loading="lazy"><p>Fettuccine al pesto</p><span><i class="bi bi-heart-fill"></i> 55</span></div>
+                            <div class="recipe"><img src="assets/img/Foroplatos/dish-6.jpg" alt="" loading="lazy"><p>Tagliatelle Alfredo</p><span><i class="bi bi-heart-fill"></i> 49</span></div>
+                          </div>
+                        </div>
+                        <div class="foro-toast"><i class="bi bi-chat-dots-fill"></i> <b>maria</b> commented on <em>Pollo guisado</em></div>
+                      </div>
+                      <span class="play-hint"><i class="bi bi-play-circle"></i> View project</span>
+                    </a>
                     <div class="portfolio-info">
                       <div class="content">
                         <span class="category">PHP Project</span>
