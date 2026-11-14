@@ -5,8 +5,18 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Óscar Sánchez | Backend Developer Portfolio</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="Backend developer specialised in Java and Spring Boot, building robust, scalable REST APIs and web platforms. Explore my projects and resume.">
+  <meta name="keywords" content="Óscar Sánchez, backend developer, Java, Spring Boot, REST API, PHP, SQL, portfolio">
+  <link rel="canonical" href="https://sanchezardev.github.io/">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Óscar Sánchez Portfolio">
+  <meta property="og:title" content="Óscar Sánchez | Backend Developer Portfolio">
+  <meta property="og:description" content="Backend developer specialised in Java and Spring Boot, building robust, scalable REST APIs and web platforms. Explore my projects and resume.">
+  <meta property="og:url" content="https://sanchezardev.github.io/">
+  <meta property="og:image" content="https://sanchezardev.github.io/assets/img/profile/oscar-profile.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicons -->
   <link href="assets/img/faviconHead.png" rel="icon">
@@ -29,6 +39,8 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <!-- Estilos propios (se cargan después de la plantilla y la sobrescriben) -->
+  <link href="assets/css/custom.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: SnapFolio
@@ -55,11 +67,11 @@
       </nav>
       <div class="social-links text-center">
 <!--        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>-->
-        <a href="https://github.com/sanchezardev" class="github"><i class="bi bi-github"></i></a>
+        <a href="https://github.com/sanchezardev" class="github" aria-label="GitHub"><i class="bi bi-github"></i></a>
 <!--        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>-->
 <!--        <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>-->
-        <a href="https://www.linkedin.com/in/sanchezar/" class="linkedin"><i class="bi bi-linkedin"></i></a>
-        <a href="https://www.artstation.com/sanchezar" class="artstation"><i class="fa-brands fa-artstation"></i></a>
+        <a href="https://www.linkedin.com/in/sanchezar/" class="linkedin" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.artstation.com/sanchezar" class="artstation" aria-label="ArtStation"><i class="fa-brands fa-artstation"></i></a>
       </div>
     </div>
   </header>
@@ -81,20 +93,32 @@
 
             <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
               <div class="hero-text">
-                <h1>Port<span class="accent-text">folio</span></h1>
-                <h2>Oscar Sanchez</h2>
-                <p class="lead">I'm a <span class="typed" data-typed-items="Backend Developer, Java and Spring Boot Specialist, Logic and Optimization enthusiast, Technical artist"></span></p>
-                <p class="description">Backend Developer focused on building robust and scalable backend systems. Expertise in Java and Spring Boot, with a professional background in high-performance technical optimization.</p>
+                <span class="hero-eyebrow"><span class="status-dot"></span> Open to backend opportunities</span>
+                <h1>Óscar <span class="accent-text">Sánchez</span></h1>
+                <p class="lead">I'm a <span class="typed" data-typed-items="Backend Developer, Java &amp; Spring Boot Developer, REST API Designer, Optimization Enthusiast"></span></p>
+                <p class="description">Backend developer specialised in Java and Spring Boot. I design RESTful architectures, secure them with JWT and back them with relational databases and tests — bringing production experience from performance-critical environments.</p>
+
+                <!-- Tech stack: añade o quita <li> libremente -->
+                <ul class="tech-stack list-unstyled">
+                  <li>Java</li>
+                  <li>Spring Boot</li>
+                  <li>Hibernate / JPA</li>
+                  <li>MariaDB</li>
+                  <li>PostgreSQL</li>
+                  <li>JWT</li>
+                  <li>Docker</li>
+                </ul>
 
                 <div class="hero-actions">
                   <a href="#portfolio" class="btn btn-primary">View My Work</a>
-                  <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                  <a href="assets/cv/OscarSanchez_CV.pdf" class="btn btn-outline" download><i class="bi bi-download me-2"></i>Download CV</a>
                 </div>
 
                 <div class="social-links">
-                  <a href="https://github.com/sanchezardev"><i class="bi bi-github"></i></a>
-                  <a href="https://www.linkedin.com/in/sanchezar/"><i class="bi bi-linkedin"></i></a>
-                  <a href="https://www.artstation.com/sanchezar" class="artstation"><i class="fa-brands fa-artstation"></i></a>
+                  <a href="https://github.com/sanchezardev" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                  <a href="https://www.linkedin.com/in/sanchezar/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="https://www.artstation.com/sanchezar" class="artstation" aria-label="ArtStation"><i class="fa-brands fa-artstation"></i></a>
+                  <a href="#contact" aria-label="Contact"><i class="bi bi-envelope"></i></a>
                 </div>
               </div>
             </div>
@@ -103,7 +127,7 @@
               <div class="hero-visual">
                 <div class="profile-container">
                   <div class="profile-background"></div>
-                  <img src="assets/img/profile/oscarPrincipal.png" alt="Oscar Sanchez" class="profile-image">
+                  <img src="assets/img/profile/oscar-profile.jpg" alt="Óscar Sánchez, backend developer" class="profile-image" width="720" height="900">
                 </div>
               </div>
             </div>
@@ -143,14 +167,15 @@
 
                 <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-photography">
                   <div class="portfolio-wrap">
-                    <img src="assets/img/SocialNetworkApiRest/DiagramaAPIRest.png" class="img-fluid" alt="Portfolio Image" loading="lazy">
+                    <img src="assets/img/SocialNetworkApiRest/DiagramaAPIRest.png" class="img-fluid" alt="Architecture diagram of the Social Network REST API" loading="lazy">
                     <div class="portfolio-info">
                       <div class="content">
                         <span class="category">Web API</span>
                         <h4>Social Network API - Spring Boot 3 & Java 23</h4>
+                        <p class="stack">Java · Spring Boot · JPA · MariaDB · JWT</p>
                         <div class="portfolio-links">
-                          <a href="assets/img/SocialNetworkApiRest/DiagramaAPIRest.png" class="glightbox" title="Social Network REST API"><i class="bi bi-plus-lg"></i></a>
-                          <a href="NewSections/NetworkApiRestProject.html" title="More Details"><i class="bi bi-arrow-right"></i></a>
+                          <a href="assets/img/SocialNetworkApiRest/DiagramaAPIRest.png" class="glightbox" title="Social Network REST API" aria-label="Enlarge image"><i class="bi bi-plus-lg"></i></a>
+                          <a href="NewSections/NetworkApiRestProject.html" title="More Details" aria-label="Project details"><i class="bi bi-arrow-right"></i></a>
                         </div>
                       </div>
                     </div>
@@ -159,14 +184,15 @@
 
                 <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-photography">
                   <div class="portfolio-wrap">
-                    <img src="assets/img/Foroplatos/Foroplatos_preview.jpeg" class="img-fluid" alt="Portfolio Image" loading="lazy">
+                    <img src="assets/img/Foroplatos/Foroplatos_preview_opt.jpg" class="img-fluid" alt="ForoPlatos web platform preview" loading="lazy">
                     <div class="portfolio-info">
                       <div class="content">
                         <span class="category">PHP Project</span>
                         <h4>ForoPlatos – Full-Stack Monolithic Web Platform (PHP/SQL)</h4>
+                        <p class="stack">PHP 8 · MariaDB · MVC · JavaScript</p>
                         <div class="portfolio-links">
-                          <a href="assets/img/Foroplatos/Foroplatos_preview.jpeg" class="glightbox" title=""><i class="bi bi-plus-lg"></i></a>
-                          <a href="NewSections/ForoplatosPHP.html" title="More Details"><i class="bi bi-arrow-right"></i></a>
+                          <a href="assets/img/Foroplatos/Foroplatos_preview_opt.jpg" class="glightbox" title="ForoPlatos" aria-label="Enlarge image"><i class="bi bi-plus-lg"></i></a>
+                          <a href="NewSections/ForoplatosPHP.html" title="More Details" aria-label="Project details"><i class="bi bi-arrow-right"></i></a>
                         </div>
                       </div>
                     </div>
@@ -182,7 +208,7 @@
 <!--                        <h4>Woodcraft Design</h4>-->
 <!--                        <div class="portfolio-links">-->
 <!--                          <a href="assets/img/portfolio/portfolio-2.webp" class="glightbox" title="Woodcraft Design"><i class="bi bi-plus-lg"></i></a>-->
-<!--                          <a href="NewSections/NetworkApiRestProject.html" title="More Details"><i class="bi bi-arrow-right"></i></a>-->
+<!--                          <a href="NewSections/NetworkApiRestProject.html" title="More Details" aria-label="Project details"><i class="bi bi-arrow-right"></i></a>-->
 <!--                        </div>-->
 <!--                      </div>-->
 <!--                    </div>-->
@@ -198,7 +224,7 @@
 <!--                        <h4>Classic Beauty</h4>-->
 <!--                        <div class="portfolio-links">-->
 <!--                          <a href="assets/img/portfolio/portfolio-portrait-2.webp" class="glightbox" title="Classic Beauty"><i class="bi bi-plus-lg"></i></a>-->
-<!--                          <a href="NetworkApiRestProject.html" title="More Details"><i class="bi bi-arrow-right"></i></a>-->
+<!--                          <a href="NetworkApiRestProject.html" title="More Details" aria-label="Project details"><i class="bi bi-arrow-right"></i></a>-->
 <!--                        </div>-->
 <!--                      </div>-->
 <!--                    </div>-->
@@ -218,223 +244,190 @@
     </section><!-- /Portfolio Section -->
 
     <!-- Resume Section -->
+    <!-- Para actualizar: cada bloque .resume-item es una entrada (puesto, proyecto, estudio). Copia uno y cambia el texto. -->
     <section id="resume" class="resume section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Resume</h2>
-        <p>I am a Backend Developer focused on building robust and scalable systems using Java and Spring Boot. My background in technical 3D art has provided me with a unique perspective on system optimization, performance, and complex logic.
-          I don't just write code; I design efficient solutions. I enjoy tackling the challenges of data persistence, API architecture, and clean code principles. My goal is to bring the same level of precision and detail I used in technical art to high-performance backend infrastructures.</p>
+        <p>Backend developer proficient in Java and Spring Boot, skilled in designing RESTful architectures, implementing security (JWT), working with relational databases and testing (JUnit/Mockito). I bring professional maturity and hands-on experience in production environments, adapting quickly to agile workflows and strict delivery deadlines.</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row gy-4">
-          <!-- Left column with summary and contact -->
+        <div class="row gy-5">
+
+          <!-- ============ Left column: profile, contact, skills, languages ============ -->
           <div class="col-lg-4">
-            <div class="resume-side" data-aos="fade-right" data-aos-delay="100">
-              <div class="profile-img mb-4">
-                <img src="assets/img/profile/oscarPrincipal.png" alt="Profile" class="img-fluid rounded">
+            <aside class="resume-side" data-aos="fade-right" data-aos-delay="100">
+
+              <div class="profile-img mb-3">
+                <img src="assets/img/profile/oscar-avatar.jpg" alt="Óscar Sánchez" class="img-fluid" width="400" height="400">
               </div>
+              <p class="side-name">Óscar Sánchez Arcada</p>
+              <p class="side-role">Backend Developer</p>
 
-<!--                  Aqui he omitido esta parte porque creo que es redundante-->
-<!--              <h3>Professional Summary</h3>-->
-<!--              <p>Driven software architect with expertise in developing scalable, high-performance enterprise solutions. Passionate about leveraging cutting-edge technologies to solve complex business challenges.</p>-->
-
-              <h3 class="mt-4">Contact Information</h3>
+              <h3>Contact</h3>
               <ul class="contact-info list-unstyled">
                 <li><i class="bi bi-geo-alt"></i> Zaragoza, Spain</li>
-                <li><i class="bi bi-envelope"></i><a href="https://mail.google.com/mail/?view=cm&fs=1&to=sanchezarprog@gmail.com" target="_blank" class="google-plus">sanchezarprog@gmail.com</a></li>
-                <li><i class="bi bi-phone"></i> +34 690104491</li>
-                <li><i class="bi bi-linkedin"></i><a href="https://linkedin.com/in/sanchezar" target="_blank"> linkedin.com/in/sanchezar/</a></li>
+                <li><i class="bi bi-envelope"></i> <a href="mailto:sanchezarprog@gmail.com">sanchezarprog@gmail.com</a></li>
+                <li><i class="bi bi-phone"></i> <a href="tel:+34690104491">+34 690 104 491</a></li>
+                <li><i class="bi bi-linkedin"></i> <a href="https://www.linkedin.com/in/sanchezar/" target="_blank" rel="noopener">linkedin.com/in/sanchezar</a></li>
+                <li><i class="bi bi-github"></i> <a href="https://github.com/sanchezardev" target="_blank" rel="noopener">github.com/sanchezardev</a></li>
               </ul>
 
-              <div class="skills-animation mt-4">
-                <h3>Technical Skills</h3>
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
-                    <span>Java, Spring Data, Hibernate and Wicket</span>
-                  </div>
-                </div>
-
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
-                    <span>SQL, MySQL, MariaDB, Microsoft SQL Server, Oracle Database and PostgreSQL</span>
-                  </div>
-                </div>
-
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
-                    <span>Git and GitHub</span>
-                  </div>
-                </div>
-
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
-                    <span>PHP and Laravel</span>
-                  </div>
-                </div>
-
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
-                    <span>Excel, Word, Access</span>
-                  </div>
-                </div>
-
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
-                    <span>IDEs IntelliJ and Eclipse</span>
-                  </div>
-                </div>
-
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
-                    <span>HTML, CSS, JavaScrip and Bootstrap</span>
-                  </div>
-                </div>
-
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
-                    <span>JSON, XML, DTD, XSD, XPath, XQuery and XSLT</span>
-                  </div>
-                </div>
-
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
-                    <span>Android Studio</span>
-                  </div>
-                </div>
-
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
-                    <span>C#, C++ and Python</span>
-                  </div>
-                </div>
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
-                    <span>Trello, Slack, Microsoft Teams</span>
-                  </div>
-                </div>
+              <h3>Technical Skills</h3>
+              <div class="skill-group">
+                <h4>Languages</h4>
+                <ul class="tag-list list-unstyled">
+                  <li>Java</li><li>C++</li><li>Python</li><li>PHP</li><li>SQL</li>
+                </ul>
               </div>
-            </div>
+              <div class="skill-group">
+                <h4>Backend &amp; Frameworks</h4>
+                <ul class="tag-list list-unstyled">
+                  <li>Spring Boot</li><li>Spring Data JPA</li><li>Hibernate</li><li>RESTful APIs</li><li>JWT</li><li>OpenAPI / Swagger</li>
+                </ul>
+              </div>
+              <div class="skill-group">
+                <h4>Databases</h4>
+                <ul class="tag-list list-unstyled">
+                  <li>MariaDB</li><li>MySQL</li><li>PostgreSQL</li>
+                </ul>
+              </div>
+              <div class="skill-group">
+                <h4>Testing &amp; DevOps</h4>
+                <ul class="tag-list list-unstyled">
+                  <li>JUnit</li><li>Mockito</li><li>Git</li><li>GitHub</li><li>Postman</li><li>Docker</li><li>IntelliJ IDEA</li>
+                </ul>
+              </div>
+              <div class="skill-group">
+                <h4>Architecture</h4>
+                <ul class="tag-list list-unstyled">
+                  <li>OOP</li><li>SOLID</li><li>MVC</li><li>Clean Architecture</li><li>Scrum</li>
+                </ul>
+              </div>
+
+              <h3>Languages</h3>
+              <ul class="lang-list list-unstyled">
+                <li><span>Spanish</span><span class="level">Native</span></li>
+                <li><span>English</span><span class="level">Advanced (B2/C1)</span></li>
+              </ul>
+
+              <a href="assets/cv/OscarSanchez_CV.pdf" class="btn btn-primary w-100 mt-4" download>
+                <i class="bi bi-download me-2"></i>Download CV (PDF)
+              </a>
+            </aside>
           </div>
 
-          <!-- Right column with experience and education -->
-          <div class="col-lg-8 ps-4 ps-lg-5">
-            <!-- Experience Section -->
+          <!-- ============ Right column: experience, projects, education, certifications ============ -->
+          <div class="col-lg-8 ps-lg-5">
+
+            <!-- Experience -->
             <div class="resume-section" data-aos="fade-up">
               <h3><i class="bi bi-briefcase me-2"></i>Professional Experience</h3>
 
               <div class="resume-item">
-                <h4>Technical Artist (Unity & Optimization)</h4>
-                <h5>2025 - Present, Valencia, Spain</h5>
-                <p class="company"><i class="bi bi-building"></i> Play&Go Experience</p>
+                <div class="item-header">
+                  <h4>Technical Artist (Optimization)</h4>
+                  <span class="date">Jan 2025 – Present</span>
+                </div>
+                <p class="company"><i class="bi bi-building"></i> <a href="https://playgoxp.com" target="_blank" rel="noopener">Play&amp;Go Experience</a> · Valencia, Spain (Remote)</p>
                 <ul>
-                  <li>Active participation in the mobile application development lifecycle, ensuring the delivery of stable versions</li>
-                  <li>Scene  optimization  for  Unity,  ensuring  performance  and  visual
-                    quality on mobile devices.</li>
-                  <li>Daily communication with clients to transform business needs into technical implementations, meeting strict delivery
-                    milestones.</li>
-                  <li>Responsible for resource and memory optimization in the Unity engine, ensuring performance on mobile devices.</li>
-                  <li>Working under agile methodologies, collaborating with the technical team for content integration.</li><pre></pre>
-                  <p><a href="https://playgoxp.com" target="_blank">https://playgoxp.com</a></p>
+                  <li>Active participation in the software development lifecycle, ensuring technical integration and the delivery of stable releases.</li>
+                  <li>Algorithmic optimization and memory management, guaranteeing performance in resource-constrained environments.</li>
+                  <li>Daily work with agile methodologies and version control, collaborating closely with the programming team.</li>
                 </ul>
               </div>
 
               <div class="resume-item">
-                <h4>3D Artist (Internship)</h4>
-                <h5>2022 - 2023, Valencia, Spain</h5>
-                <p class="company"><i class="bi bi-building"></i> ESAT</p>
+                <div class="item-header">
+                  <h4>3D Artist (Development Internship)</h4>
+                  <span class="date">Sep 2022 – Jul 2023</span>
+                </div>
+                <p class="company"><i class="bi bi-building"></i> ESAT (Development Team) · Valencia, Spain</p>
                 <ul>
-                  <li>Collaboration in a multidisciplinary team of 18 people, gaining experience in complete production cycles.</li>
-                  <li>Asset management and resolution of basic conflicts in the project’s version control.</li>
-                  <p>My project:</p><pre></pre>
-                  <p><a href="https://store.steampowered.com/app/2432470/ANDARA_RISE_FOR_REBELLION/" target="_blank">https://store.steampowered.com/app/2432470/ANDARA_RISE_FOR_REBELLION/</a></p><pre></pre>
-                  <p>My 3D artist portfolio:</p><pre></pre>
-                  <p><a href="https://www.artstation.com/sanchezar" target="_blank">https://www.artstation.com/sanchezar</a></p>
-                </ul>
-              </div>
-
-              <div class="resume-item">
-                <h4>Final Degree Project in Programming</h4>
-                <h5>2020 - 2020, Zaragoza, Spain</h5>
-                <p class="company"><i class="bi bi-building"></i> I.E.S Pablo Serrano</p>
-                <ul>
-                  <p>I developed all the programming for a video game using UE4, managing
-                    aspects  such  as  enemy  behavior,  inventory  systems,  and  character
-                    mobility  —  from  simple  to  advanced  actions  such  as  swimming,
-                    jumping, and running.</p><pre></pre>
-                  <li>Programming in C++</li>
-                  <li>Node-based programming in Unreal Engine 4</li>
-                  <li>Creation and management of databases</li>
-                  <li>AI behavior management of enemies</li>
-                  <li>Use of Epic Games libraries</li>
-                  <li>Importing animations and textures</li>
-                  <li>Performance optimization</li>
+                  <li>Technical collaboration in a multidisciplinary team of 18 people, managing assets and version control (Git).</li>
+                  <li>Shipped title: <a href="https://store.steampowered.com/app/2432470/ANDARA_RISE_FOR_REBELLION/" target="_blank" rel="noopener">Andara: Rise for Rebellion (Steam)</a> · <a href="https://www.artstation.com/sanchezar" target="_blank" rel="noopener">ArtStation portfolio</a></li>
                 </ul>
               </div>
             </div>
 
-            <!-- Education Section -->
-            <div class="resume-section" data-aos="fade-up" data-aos-delay="100">
+            <!-- Projects -->
+            <div class="resume-section" data-aos="fade-up">
+              <h3><i class="bi bi-code-slash me-2"></i>Programming Projects</h3>
+
+              <div class="resume-item">
+                <div class="item-header">
+                  <h4><a href="NewSections/NetworkApiRestProject.html">Social Network REST API</a></h4>
+                  <span class="date">Java · Spring Boot · Hibernate · MariaDB · JWT</span>
+                </div>
+                <ul>
+                  <li>RESTful API for managing users and posts using a layered architecture (Controller, Service, Repository).</li>
+                  <li>Stateless security with JSON Web Tokens (JWT) and relational persistence with Spring Data JPA.</li>
+                  <li>Unit tests (JUnit, Mockito) and interactive endpoint documentation with OpenAPI/Swagger.</li>
+                </ul>
+              </div>
+
+              <div class="resume-item">
+                <div class="item-header">
+                  <h4>Logic Project: Engine &amp; Data Structures</h4>
+                  <span class="date">Mar 2020 – Jun 2020 · C++ · OOP</span>
+                </div>
+                <ul>
+                  <li>Core object-oriented logic and custom data structures written in C++.</li>
+                  <li>Algorithmic design of entity behaviour using Finite State Machines (FSM).</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Education -->
+            <div class="resume-section" data-aos="fade-up">
               <h3><i class="bi bi-mortarboard me-2"></i>Education</h3>
 
               <div class="resume-item">
-                <h4>HND in Computer Game Development</h4>
-                <h5>2020 - 2023</h5>
-                <p class="company"><i class="bi bi-building"></i> ESAT</p>
-                <p><a href="https://www.esat.es/">https://www.esat.es/</a></p>
+                <div class="item-header">
+                  <h4>Higher Technical Degree in Web Application Development (DAW)</h4>
+                  <span class="date">Sep 2026 – Present</span>
+                </div>
+                <p class="company"><i class="bi bi-building"></i> IES Itaca · Zaragoza, Spain</p>
               </div>
 
               <div class="resume-item">
-                <h4>CFGS in Multiplatform Application Development (DAM)</h4>
-                <h5>2018 - 2020</h5>
-                <p class="company"><i class="bi bi-building"></i> I.E.S Pablo Serrano</p>
-                <li>Implementation of the MVC (Model-View-Controller) pattern</li>
-                <li>Web development</li>
-                <li>Android application development</li>
-                <li>Use of repositories such as GitHub</li>
-                <li>Back-end programming</li>
-                <li>OOP (Object-Oriented Programming)</li>
-                <li>Application of SOLID principles</li>
+                <div class="item-header">
+                  <h4>HND in Computer Game Development</h4>
+                  <span class="date">Sep 2020 – Jul 2023</span>
+                </div>
+                <p class="company"><i class="bi bi-building"></i> <a href="https://www.esat.es/" target="_blank" rel="noopener">ESAT</a> (Escuela Superior de Arte y Tecnología) · Valencia, Spain</p>
+              </div>
+
+              <div class="resume-item">
+                <div class="item-header">
+                  <h4>Higher Technical Degree in Multiplatform Application Development (DAM)</h4>
+                  <span class="date">Sep 2018 – Jun 2020</span>
+                </div>
+                <p class="company"><i class="bi bi-building"></i> IES Pablo Serrano · Zaragoza, Spain</p>
               </div>
             </div>
 
-            <!-- Certifications Section -->
-            <div class="resume-section" data-aos="fade-up" data-aos-delay="200">
+            <!-- Certifications -->
+            <div class="resume-section" data-aos="fade-up">
               <h3><i class="bi bi-award me-2"></i>Certifications</h3>
 
               <div class="resume-item">
-                <h4>Codecademy Certified Course - Learn Spring:
-                  Building An App</h4>
-                <h5>2025, Zaragoza, Spain</h5>
+                <h4>Learn Spring: Building An App (Backend focus)</h4>
+                <p class="company"><i class="bi bi-patch-check"></i> Codecademy Certified Course</p>
               </div>
 
               <div class="resume-item">
-                <h4>Codecademy Certified Course - Learn Java:
-                  Debugging</h4>
-                <h5>2025, Zaragoza, Spain</h5>
+                <h4>Learn Java: Debugging</h4>
+                <p class="company"><i class="bi bi-patch-check"></i> Codecademy Certified Course</p>
               </div>
             </div>
+
           </div>
-          <section id="about" class="about section">
-            <div class="cta-section">
-              <a href="assets/cv/OscarSanchez_cv_dev_english.pdf" class="btn btn-primary centered">
-                <i class="bi bi-download"></i>
-                Download Resume
-              </a>
-            </div>
-            <style>
-              .centered {
-                margin: 0 auto; /* centra horizontalmente */
-                text-align: center;
-              }
-            </style>
-          </section>
         </div>
 
-      </div>
-      <div class="about-content">
       </div>
 
     </section><!-- /Resume Section -->
@@ -472,7 +465,7 @@
                 </div>
                 <div class="content">
                   <h4>Phone Number</h4>
-                  <p>+34 690104491</p>
+                  <p><a href="tel:+34690104491">+34 690 104 491</a></p>
                 </div>
               </div>
 
@@ -482,7 +475,7 @@
                 </div>
                 <div class="content">
                   <h4>Email Address</h4>
-                  <p>sanchezarprog@gmail.com</p>
+                  <p><a href="mailto:sanchezarprog@gmail.com">sanchezarprog@gmail.com</a></p>
                 </div>
               </div>
             </div>
@@ -530,6 +523,13 @@
     </section><!-- /Contact Section -->
 
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Óscar Sánchez Arcada · Backend Developer</p>
+      <p class="footer-links"><a href="https://github.com/sanchezardev">GitHub</a> · <a href="https://www.linkedin.com/in/sanchezar/">LinkedIn</a> · <a href="assets/cv/OscarSanchez_CV.pdf" download>CV</a></p>
+    </div>
+  </footer>
 <!--  <footer id="footer" class="footer position-relative">-->
 
 <!--    <div class="container">-->
@@ -548,7 +548,7 @@
 <!--  </footer>-->
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" aria-label="Back to top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
