@@ -7,16 +7,22 @@
    ========================================================================== */
 
 :root {
-  /* Paleta (mantiene los grises originales) */
-  --background-color: #1c1c1e;   /* fondo general */
-  --surface-color: #242426;      /* tarjetas y cajas */
-  --border-color: #333336;       /* bordes finos */
-  --default-color: #d6d6d8;      /* texto normal */
-  --muted-color: #9a9a9f;        /* texto secundario (fechas, subtítulos) */
+  /* Paleta: grises casi negros con un ligero tono frío + un único color de marca */
+  --background-color: #16181b;   /* fondo general */
+  --surface-color: #1d2024;      /* tarjetas y cajas */
+  --border-color: #2c3036;       /* bordes finos */
+  --default-color: #d4d7dc;      /* texto normal */
+  --muted-color: #8f959e;        /* texto secundario (fechas, subtítulos) */
   --heading-color: #ffffff;      /* títulos */
-  --accent-color: #ececec;       /* botones, enlaces, detalles */
-  --contrast-color: #1c1c1e;     /* texto sobre fondo claro (botón principal) */
-  --status-color: #4caf7d;       /* punto verde "Open to opportunities" */
+  --accent-color: #ececec;       /* blanco roto: iconos, enlaces neutros */
+  --contrast-color: #0e1513;     /* texto sobre fondos claros o de marca */
+
+  /* Color de marca (verde azulado). Cámbialo aquí y se actualiza toda la web */
+  --brand-color: #3ccfae;
+  --brand-hover: #5fe0c3;
+  --brand-soft: color-mix(in srgb, var(--brand-color), transparent 88%);   /* fondos suaves */
+  --brand-line: color-mix(in srgb, var(--brand-color), transparent 55%);   /* bordes/líneas */
+  --status-color: var(--brand-color);  /* punto "Open to ... roles" */
 
   /* Medidas */
   --radius: 12px;
@@ -44,7 +50,7 @@ section,
 
 /* Sidebar lateral un poco más oscura y con borde */
 .header {
-  --background-color: #161618;
+  --background-color: #111316;
   border-right: 1px solid var(--border-color);
 }
 
@@ -770,4 +776,351 @@ section,
   .api-sidebar { display: none; }
   .api-json { font-size: 9.5px; }
   .foro-tabs { display: none; }
+}
+
+/* ==========================================================================
+   Color de marca aplicado a los puntos clave
+   (todo usa --brand-color; para quitar el color de un sitio, borra su regla)
+   ========================================================================== */
+::selection { background: var(--brand-color); color: var(--contrast-color); }
+
+a { transition: color 0.25s ease; }
+
+/* Botón principal */
+.btn.btn-primary,
+.hero .hero-actions .btn.btn-primary {
+  background: var(--brand-color);
+  border: 1px solid var(--brand-color);
+  color: var(--contrast-color);
+  font-weight: 600;
+  box-shadow: 0 8px 24px -10px var(--brand-color);
+}
+
+.btn.btn-primary:hover,
+.hero .hero-actions .btn.btn-primary:hover {
+  background: var(--brand-hover);
+  border-color: var(--brand-hover);
+  color: var(--contrast-color);
+  transform: translateY(-2px);
+}
+
+.hero .hero-actions .btn.btn-outline:hover {
+  background: transparent;
+  border-color: var(--brand-color);
+  color: var(--brand-color);
+}
+
+/* Hero: apellido subrayado, texto escrito y cursor */
+.hero .hero-text h1 .accent-text::after {
+  background: linear-gradient(90deg, var(--brand-color), transparent);
+}
+
+.hero .hero-text .lead span.typed {
+  color: var(--brand-color);
+  border-bottom-color: var(--brand-line);
+}
+
+.hero .hero-text .lead .typed-cursor {
+  color: var(--brand-color);
+}
+
+.hero-eyebrow {
+  border-color: var(--brand-line);
+  background: var(--brand-soft);
+  color: var(--default-color);
+}
+
+.hero .tech-stack li:hover,
+.tag-list li:hover {
+  border-color: var(--brand-line);
+  color: var(--brand-color);
+}
+
+.tech-stack li,
+.tag-list li {
+  transition: border-color 0.25s, color 0.25s;
+}
+
+.hero .social-links a:hover,
+.header .social-links a:hover {
+  background: var(--brand-color);
+  color: var(--contrast-color);
+}
+
+.hero .hero-visual .profile-container .profile-background {
+  background: linear-gradient(135deg, var(--brand-soft), transparent 70%);
+  border: 1px solid var(--brand-line);
+}
+
+/* Títulos de sección: líneas de color que crecen al aparecer */
+.section-title h2:before,
+.section-title h2:after {
+  background: var(--brand-color);
+  opacity: 1;
+  transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+
+.section-title[data-aos]:not(.aos-animate) h2:before,
+.section-title[data-aos]:not(.aos-animate) h2:after {
+  width: 0;
+}
+
+/* Barra lateral: indicador de sección activa */
+.navmenu a {
+  position: relative;
+  border-radius: 8px;
+}
+
+.navmenu a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 3px;
+  height: 0;
+  border-radius: 3px;
+  background: var(--brand-color);
+  transform: translateY(-50%);
+  transition: height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navmenu a.active::before {
+  height: 60%;
+}
+
+.navmenu a.active,
+.navmenu a.active .navicon {
+  color: var(--heading-color);
+}
+
+.navmenu a.active .navicon,
+.navmenu a:hover .navicon {
+  color: var(--brand-color);
+}
+
+/* Portfolio */
+.portfolio .portfolio-filters li.filter-active {
+  color: var(--brand-color);
+  background-color: var(--brand-soft);
+  border-left-color: var(--brand-color);
+}
+
+.portfolio .portfolio-wrap .portfolio-info .category {
+  background: var(--brand-soft);
+  color: var(--brand-color);
+  border: 1px solid var(--brand-line);
+  box-shadow: none;
+}
+
+.portfolio .portfolio-wrap:hover {
+  border-color: var(--brand-line);
+  box-shadow: 0 20px 50px -20px color-mix(in srgb, var(--brand-color), transparent 60%);
+}
+
+.play-hint {
+  background: var(--brand-color);
+  color: var(--contrast-color);
+}
+
+/* Resume */
+.resume .resume-section h3 i {
+  color: var(--brand-color);
+}
+
+.resume .resume-section .resume-item:before {
+  border-color: var(--brand-color);
+  box-shadow: 0 0 0 4px var(--background-color);
+}
+
+.resume .resume-section .resume-item:hover:before {
+  background: var(--brand-color);
+}
+
+.resume .resume-section .resume-item .company a,
+.resume .resume-side .contact-info a:hover,
+.resume .resume-section .resume-item ul li a {
+  color: var(--brand-color);
+}
+
+.resume .resume-side .contact-info li i {
+  color: var(--brand-color);
+}
+
+.resume .resume-side .profile-img img {
+  border-color: var(--brand-line);
+}
+
+/* Contact */
+.contact .info-item .icon-box {
+  background-color: var(--brand-soft);
+  border: 1px solid var(--brand-line);
+}
+
+.contact .info-item .icon-box i {
+  color: var(--brand-color);
+}
+
+.contact .info-item:hover .icon-box {
+  background-color: var(--brand-color);
+}
+
+.contact .info-item:hover .icon-box i {
+  color: var(--contrast-color);
+}
+
+.contact .form-control:focus {
+  border-color: var(--brand-color);
+  box-shadow: 0 0 0 3px var(--brand-soft);
+}
+
+.contact .contact-form .btn,
+.contact .contact-form button[type="submit"] {
+  background: var(--brand-color);
+  color: var(--contrast-color);
+  border: none;
+  font-weight: 600;
+}
+
+.contact .contact-form button[type="submit"]:hover {
+  background: var(--brand-hover);
+}
+
+/* Botón volver arriba */
+.scroll-top {
+  background-color: var(--brand-color);
+}
+
+.scroll-top:hover {
+  background-color: var(--brand-hover);
+}
+
+.site-footer a:hover {
+  color: var(--brand-color);
+}
+
+/* ==========================================================================
+   Fondo animado del hero: cuadrícula + fragmentos de código
+   ========================================================================== */
+.hero .background-elements .bg-circle {
+  background: radial-gradient(circle, var(--brand-soft), transparent 70%);
+}
+
+/* Cuadrícula fina que se difumina hacia los bordes y un barrido de luz que la recorre */
+.bg-grid {
+  position: absolute;
+  inset: -40px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 30%, transparent 75%);
+  animation: grid-drift 30s linear infinite;
+}
+
+.bg-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--brand-color), transparent 90%) 50%, transparent 100%);
+  background-size: 100% 300px;
+  background-repeat: no-repeat;
+  animation: grid-scan 9s ease-in-out infinite;
+}
+
+.code-float span {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.16);
+  white-space: nowrap;
+  opacity: 0;
+  animation: code-drift var(--t, 16s) ease-in-out var(--d, 0s) infinite;
+  user-select: none;
+}
+
+.code-float span.hl {
+  font-size: 20px;
+  color: color-mix(in srgb, var(--brand-color), transparent 50%);
+}
+
+@keyframes grid-drift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 48px 48px, 48px 48px; }
+}
+
+@keyframes grid-scan {
+  0% { background-position: 0 -300px; }
+  60%, 100% { background-position: 0 calc(100% + 300px); }
+}
+
+@keyframes code-drift {
+  0% { opacity: 0; transform: translateY(16px); }
+  20%, 70% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-24px); }
+}
+
+@media (max-width: 991px) {
+  .code-float span:nth-child(n + 7) { display: none; }   /* menos ruido en pantallas pequeñas */
+  .code-float span { font-size: 11px; }
+}
+
+/* ==========================================================================
+   Animaciones de aparición al hacer scroll (sobre AOS)
+   Más suaves: desplazamiento corto + desenfoque que se aclara.
+   ========================================================================== */
+[data-aos^="fade"][data-aos^="fade"],
+[data-aos^="zoom"][data-aos^="zoom"] {
+  transition-property: opacity, transform, filter;
+  filter: blur(8px);
+}
+
+[data-aos^="fade"][data-aos^="fade"].aos-animate,
+[data-aos^="zoom"][data-aos^="zoom"].aos-animate {
+  filter: blur(0);
+}
+
+[data-aos="fade-up"] { transform: translate3d(0, 36px, 0) scale(0.98); }
+[data-aos="fade-right"] { transform: translate3d(-36px, 0, 0); }
+[data-aos="fade-left"] { transform: translate3d(36px, 0, 0); }
+[data-aos="zoom-in"] { transform: scale(0.85); }
+
+/* Accesibilidad: sin animaciones de fondo ni de entrada si el usuario lo pide */
+@media (prefers-reduced-motion: reduce) {
+  .bg-grid, .bg-grid::after, .code-float span { animation: none !important; }
+  .code-float span { opacity: 0.6; }
+  [data-aos] { filter: none !important; transform: none !important; opacity: 1 !important; }
+}
+
+/* Caja "Contact Info": oscura como el resto de tarjetas (la plantilla la ponía blanca) */
+.contact .info-box {
+  background: linear-gradient(160deg, var(--surface-color), var(--background-color));
+  color: var(--default-color);
+  border-top: 2px solid var(--brand-color);
+}
+
+.contact .info-box h3,
+.contact .info-item .content h4 {
+  color: var(--heading-color);
+}
+
+.contact .info-item .content p,
+.contact .info-item .content a {
+  color: var(--muted-color);
+}
+
+.contact .info-item .content a:hover {
+  color: var(--brand-color);
+}
+
+/* Punto de disponibilidad con pulso suave */
+.status-dot {
+  animation: status-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px var(--brand-soft); }
+  50% { box-shadow: 0 0 0 6px transparent; }
 }

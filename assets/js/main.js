@@ -79,10 +79,40 @@
   /**
    * Animation on scroll function and init
    */
+  /**
+   * Aparición escalonada: a cada elemento de estas listas se le asigna
+   * automáticamente una animación AOS con un pequeño retraso creciente.
+   * Para animar algo más, añade su selector aquí (no hace falta tocar el HTML).
+   */
+  const staggerGroups = [
+    { selector: '.portfolio-item .portfolio-wrap', animation: 'fade-up', step: 120 },  // el hijo, no .portfolio-item (Isotope lo mueve con transform)
+    { selector: '.resume-section .resume-item', animation: 'fade-up', step: 90 },
+    { selector: '.skill-group', animation: 'fade-up', step: 70 },
+    { selector: '.contact .info-item', animation: 'fade-up', step: 100 },
+    { selector: '.hero .tech-stack li', animation: 'zoom-in', step: 60, start: 400 }
+  ];
+
+  function applyStagger() {
+    staggerGroups.forEach(({ selector, animation, step, start = 0 }) => {
+      const parents = new Map();
+      document.querySelectorAll(selector).forEach((el) => {
+        if (el.hasAttribute('data-aos')) return;
+        // el retraso se reinicia en cada bloque (sección del CV, fila, etc.)
+        const group = el.parentElement.closest('.resume-section, .row, section') || document.body;
+        const i = parents.get(group) || 0;
+        parents.set(group, i + 1);
+        el.setAttribute('data-aos', animation);
+        el.setAttribute('data-aos-delay', String(Math.min(start + i * step, 900)));
+      });
+    });
+  }
+
   function aosInit() {
+    applyStagger();
     AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
+      duration: 900,
+      easing: 'ease-out-cubic',
+      offset: 80,
       once: true,
       mirror: false
     });
@@ -95,12 +125,14 @@
   const selectTyped = document.querySelector('.typed');
   if (selectTyped) {
     let typed_strings = selectTyped.getAttribute('data-typed-items');
-    typed_strings = typed_strings.split(',');
+    // Separa por comas y quita espacios. No uses "&" en las frases: Typed.js lo trata como HTML.
+    typed_strings = typed_strings.split(',').map(s => s.trim());
     new Typed('.typed', {
       strings: typed_strings,
       loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
+      typeSpeed: 70,
+      backSpeed: 35,
+      smartBackspace: true,
       backDelay: 2000
     });
   }

@@ -81,9 +81,26 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section">
 
-      <div class="background-elements">
+      <div class="background-elements" aria-hidden="true">
         <div class="bg-circle circle-1"></div>
         <div class="bg-circle circle-2"></div>
+        <!-- Cuadrícula técnica con barrido de luz -->
+        <div class="bg-grid"></div>
+        <!-- Fragmentos de código flotantes: cambia el texto, la posición (--x, --y),
+             el retraso (--d) o la duración (--t). class="hl" = color de acento. -->
+        <div class="code-float">
+          <span style="--x: 6%;  --y: 14%; --d: 0s;  --t: 14s">@RestController</span>
+          <span style="--x: 70%; --y: 8%;  --d: 3s;  --t: 16s" class="hl">{ }</span>
+          <span style="--x: 44%; --y: 4%;  --d: 6s;  --t: 18s">SELECT * FROM posts;</span>
+          <span style="--x: 88%; --y: 30%; --d: 1s;  --t: 15s">@Autowired</span>
+          <span style="--x: 3%;  --y: 52%; --d: 4s;  --t: 17s" class="hl">&lt;/&gt;</span>
+          <span style="--x: 52%; --y: 88%; --d: 2s;  --t: 16s">HTTP/1.1 200 OK</span>
+          <span style="--x: 82%; --y: 76%; --d: 7s;  --t: 19s">public class User { }</span>
+          <span style="--x: 22%; --y: 90%; --d: 5s;  --t: 14s" class="hl">=&gt;</span>
+          <span style="--x: 36%; --y: 28%; --d: 9s;  --t: 20s">git commit -m "feat: jwt"</span>
+          <span style="--x: 92%; --y: 52%; --d: 8s;  --t: 15s" class="hl">;</span>
+          <span style="--x: 14%; --y: 72%; --d: 10s; --t: 18s">Optional&lt;User&gt;</span>
+        </div>
       </div>
 
       <div class="hero-content">
@@ -93,10 +110,10 @@
 
             <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
               <div class="hero-text">
-                <span class="hero-eyebrow"><span class="status-dot"></span> Open to backend opportunities</span>
+                <span class="hero-eyebrow"><span class="status-dot"></span> Open to Backend and Full-Stack roles</span>
                 <h1>Óscar <span class="accent-text">Sánchez</span></h1>
-                <p class="lead">I'm a <span class="typed" data-typed-items="Backend Developer, Java &amp; Spring Boot Developer, REST API Designer, Optimization Enthusiast"></span></p>
-                <p class="description">Backend developer specialised in Java and Spring Boot. I design RESTful architectures, secure them with JWT and back them with relational databases and tests — bringing production experience from performance-critical environments.</p>
+                <p class="lead">I'm a <span class="typed" data-typed-items="Backend Developer,Java and Spring Boot Developer,Full-Stack Developer,REST API Designer"></span></p>
+                <p class="description">Backend developer specialised in Java and Spring Boot. I design RESTful architectures, secure them with JWT and back them with relational databases and tests, and I am comfortable working across the full stack.</p>
 
                 <!-- Tech stack: añade o quita <li> libremente -->
                 <ul class="tech-stack list-unstyled">
