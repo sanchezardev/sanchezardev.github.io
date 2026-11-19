@@ -1124,3 +1124,99 @@ a { transition: color 0.25s ease; }
   0%, 100% { box-shadow: 0 0 0 3px var(--brand-soft); }
   50% { box-shadow: 0 0 0 6px transparent; }
 }
+
+/* ==========================================================================
+   Páginas de proyecto (NewSections/*.html): mismo color de marca que el index
+   (la plantilla usaba amarillo #ffc107 en slider, flechas y botones)
+   ========================================================================== */
+.text-brand { color: var(--brand-color) !important; }
+
+.portfolio-details .slide-preview-wrap:hover .slide-zoom-hint {
+  background: var(--brand-color);
+  border-color: var(--brand-color);
+  color: var(--contrast-color);
+  box-shadow: 0 6px 16px -4px var(--brand-color);
+}
+
+.portfolio-details .portfolio-details-slider .swiper-button-prev:hover,
+.portfolio-details .portfolio-details-slider .swiper-button-next:hover {
+  background: var(--brand-color);
+  border-color: var(--brand-color);
+  color: var(--contrast-color);
+  box-shadow: 0 6px 20px -6px var(--brand-color);
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: var(--brand-color);
+}
+
+.portfolio-details .quick-nav-btn:hover {
+  border-color: var(--brand-line);
+  color: var(--brand-color);
+}
+
+.portfolio-details .quick-nav-btn.active {
+  background: var(--brand-soft);
+  color: var(--brand-color);
+  border-color: var(--brand-color);
+  box-shadow: none;
+}
+
+.portfolio-details .project-mockup-frame,
+.portfolio-details .portfolio-info {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+}
+
+.portfolio-details .portfolio-info {
+  border-top: 2px solid var(--brand-color);
+  background: linear-gradient(160deg, var(--surface-color), var(--background-color));
+}
+
+.portfolio-details .portfolio-info h3::after {
+  background: var(--brand-color);
+}
+
+.portfolio-details .portfolio-info ul li a,
+.portfolio-details .portfolio-description a {
+  color: var(--brand-color);
+}
+
+.portfolio-details .portfolio-description h2,
+.portfolio-details .portfolio-description h3 {
+  color: var(--heading-color);
+}
+
+.portfolio-details .portfolio-description h2 i,
+.portfolio-details .portfolio-description h3 i,
+.portfolio-details .portfolio-description li i {
+  color: var(--brand-color);
+}
+
+/* Cabecera de las páginas de proyecto */
+.page-title {
+  border-bottom: 1px solid var(--border-color);
+  background:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 48px 48px,
+    var(--background-color);
+}
+
+.page-title h1 {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.page-title h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 2px;
+  background: var(--brand-color);
+}
+
+.page-title .breadcrumbs a:hover {
+  color: var(--brand-color);
+}
